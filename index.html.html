@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mds ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        header {
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        .contador {
+            font-size: 20px;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .container {
+            margin: 20px auto;
+            width: 80%;
+            padding: 20px;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        .textos {
+            margin-top: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 10px auto;
+            width: 60%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        /* Efeito de corações caindo */
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Galeria Secreta 💖</h1>
+    </header>
+
+    <div class="contador">
+        <h2>Aguentando voce há:</h2>
+        <p id="tempoJuntos"></p>
+    </div>
+
+    <div class="container">
+        <h2> Fotinhas</h2>
+        <div class="gallery">
+            <img src="img1.jpg.jpg" alt="Foto 1">
+            <img src="img2.jpg.jpg" alt="Foto 2">
+            <img src="img3.jpg.jpg" alt="Foto 3">
+        </div>
+    </div>
+
+    <div class="container textos">
+        <h2>Meus Textos</h2>
+        <div class="card">
+            <p>Seu texto personalizado aqui...</p>
+        </div>
+        <div class="card">
+            <p>Outro texto que quiser adicionar...</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Feito com ODIO 💖</p>
+    </footer>
+
+    <script>
+        function calcularTempoJuntos() {
+            // 🚨 EDITE AQUI: Coloque a data que vocês começaram a ficar juntos!
+            const dataInicio = new Date("2021-12-30T00:00:00"); 
+
+            const agora = new Date();
+            const diffMilissegundos = agora - dataInicio;
+
+            const segundos = Math.floor(diffMilissegundos / 1000);
+            const minutos = Math.floor(segundos / 60);
+            const horas = Math.floor(minutos / 60);
+            const dias = Math.floor(horas / 24);
+            const semanas = Math.floor(dias / 7);
+            const meses = Math.floor(dias / 30.44);
+            const anos = Math.floor(dias / 365);
+
+            document.getElementById("tempoJuntos").innerHTML = `
+                ${anos} anos, ${meses % 12} meses, ${semanas % 4} semanas, ${dias % 30} dias, 
+                ${horas % 24} horas, ${minutos % 60} minutos e ${segundos % 60} segundos ❤️
+            `;
+        }
+
+        setInterval(calcularTempoJuntos, 1000);
+        calcularTempoJuntos();
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("heart");
+            document.body.appendChild(heart);
+
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            heart.style.fontSize = Math.random() * 20 + 10 + "px";
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
